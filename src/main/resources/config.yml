@@ -1,0 +1,59 @@
+##########################################################
+#                  Khraal DivinVote                      #
+#                       v.1.1                            #
+#                                                        #
+#                    www.khraal.fr                       #
+#                                                        #
+##########################################################
+
+config:
+  voteParty:
+    current: 5
+    needed: 300
+    recompense: "crate give all mythique 1"
+  recompenses:
+    - crate give to %p vote 4
+    - ezlink win %p 390
+  recompensestopvoteurs:
+    5:
+      - eco give %p 20000
+    10:
+      - eco give %p 50000
+    15:
+      - ezlink win %p 391
+    20:
+      - ezlink win %p 392
+    25:
+      - ezlink win %p 393
+      - bc Félicitations à &b%p&a qui a voté + de 25 fois ce mois !
+    30:
+      - ezlink win %p 394
+      - bc Félicitations à &b%p&a qui a voté tout les jours ce mois !
+  links:
+    1: "https://bit.ly/2wc0o59"
+    2: "https://bit.ly/30BMgQw"
+    3: "https://bit.ly/2WkXjOU"
+    4: "https://bit.ly/2M32PSc"
+    5: "https://bit.ly/2Qkk1Bl"
+    6: "https://bit.ly/2YJNNlK"
+  texts:
+    instructions:
+      - "&e&l* &7Comment voter:"
+      - "  &e1 - &7Clique sur chaque lien ci-dessus"
+      - "  &e2 - &7Valide ton vote sur chaque site"
+      - "  &e3 - &7Clique-&eDroit&7 sur un minecart"
+      - "  &e4 - &7Assure-toi que tout les votes sont valides"
+      - "  &e5 - &7Clique sur &aRecuperer ma recompense"
+      - ""
+      - "&e&l* &7Recompense de fin du mois:"
+      - "&e  - &75 votes -> &e20k $"
+      - "&e  - &710 votes -> &e50k $"
+      - "&e  - &715 votes -> &e20 Tokens"
+      - "&e  - &720 votes -> &e40 Tokens"
+      - "&e  - &725 votes -> &e80 Tokens"
+      - "&e  - &730 votes -> &e130 &eTokens"
+      - ""
+      - "&c&l(!) &cATTENTION &7Nous avons developpe"
+      - "&7un systeme de verification des votes,"
+      - "&7tu dois donc correctement voter :D !"
+      - ""

@@ -1,0 +1,8 @@
+name: DivinVote
+version: 1.3
+author: Tikifirst
+main: fr.tikifirst.divinvote.main.Main
+commands:
+  vote:
+    description: zaeza
+    permission: divin.basics
