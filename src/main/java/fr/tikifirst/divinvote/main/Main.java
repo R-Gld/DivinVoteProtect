@@ -1,5 +1,6 @@
 package fr.tikifirst.divinvote.main;
 
+import fr.tikifirst.divinvote.cmd.commandsVote;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -9,12 +10,7 @@ public class Main extends JavaPlugin {
 		
 		getServer().getPluginManager().registerEvents(new fr.tikifirst.divinvote.event.InteractGUI(this), this);
 		
-		getCommand("vote").setExecutor(new fr.tikifirst.divinvote.cmd.commandesVote(this));
-	}
-	
-	public static String getApiLink(int i)
-	{
-		return "0";
+		getCommand("vote").setExecutor(new commandsVote(this));
 	}
 	
 }

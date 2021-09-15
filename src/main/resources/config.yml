@@ -1,6 +1,6 @@
 ##########################################################
 #                  Khraal DivinVote                      #
-#                       v.1.1                            #
+#                       v.1.4                            #
 #                                                        #
 #                    www.khraal.fr                       #
 #                                                        #
@@ -8,52 +8,164 @@
 
 config:
   voteParty:
-    current: 5
-    needed: 300
-    recompense: "crate give all mythique 1"
+    current: 120
+    needed: 500
+    recompense: eco give * 300000
   recompenses:
-    - crate give to %p vote 4
-    - ezlink win %p 390
-  recompensestopvoteurs:
-    5:
-      - eco give %p 20000
-    10:
-      - eco give %p 50000
-    15:
-      - ezlink win %p 391
-    20:
-      - ezlink win %p 392
-    25:
-      - ezlink win %p 393
-      - bc Félicitations à &b%p&a qui a voté + de 25 fois ce mois !
-    30:
-      - ezlink win %p 394
-      - bc Félicitations à &b%p&a qui a voté tout les jours ce mois !
+    - crate give to %p vote 1
+    - eco give %p 5000
+  paliers:
+    '10':
+      cmd:
+        - eco give %p 30000
+        - xp give %p 3000
+      awards:
+        - ''
+        - ' &6&l» &eRécompenses:'
+        - '&6&l » &a&l30,000 $'
+        - '&6&l » &a&l3000 XP (30 niveaux)'
+    '20':
+      cmd:
+        - eco give %p 50000
+        - xp give %p 5350
+      awards:
+        - ''
+        - ' &6&l» &eRécompenses:'
+        - '&6&l » &a&l50,000 $'
+        - '&6&l » &a&l5350 XP (40 niveaux)'
+    '40':
+      cmd:
+        - eco give %p 100000
+        - xp give %p 8670
+        - crate give to %p outils 1
+        - ezlink win %p 559
+      awards:
+        - ''
+        - ' &6&l» &eRécompenses:'
+        - '&6&l » &e? &a&l+ 5 TOKENS &e?'
+        - '&6&l » &a&l100,000 $'
+        - '&6&l » &a&l3000 XP (50 niveaux)'
+        - '&6&l » &a&l1x Clef &e&lOutils'
+    '60':
+      cmd:
+        - eco give %p 500000
+        - xp give %p 18020
+        - crate give to %p outils 2
+        - ezlink win %p 560
+      awards:
+        - ''
+        - ' &6&l» &eRécompenses:'
+        - '&6&l » &e? &a&l+ 10 TOKENS &e?'
+        - '&6&l » &a&l500,000 $'
+        - '&6&l » &a&l18020 XP (60 niveaux)'
+        - '&6&l » &a&l2x Clef &e&lOutils'
+    '80':
+      cmd:
+        - eco give %p 1000000
+        - xp give %p 31000
+        - crate give to %p outils 3
+        - ezlink win %p 561
+      awards:
+        - ''
+        - ' &6&l» &eRécompenses:'
+        - '&6&l » &e? &a&l+ 15 TOKENS &e?'
+        - '&6&l » &a&l1,000,000 $'
+        - '&6&l » &a&l31000 XP (100 niveaux)'
+        - '&6&l » &a&l3x Clef &e&lOutils'
+    '100':
+      cmd:
+        - eco give %p 3000000
+        - xp give %p 80000
+        - crate give to %p mythique 1
+        - ezlink win %p 562
+      awards:
+        - ''
+        - ' &6&l» &eRécompenses:'
+        - '&6&l » &e? &a&l+ 20 TOKENS &e?'
+        - '&6&l » &a&l3,000,000 $'
+        - '&6&l » &a&l3000 XP (150 niveaux)'
+        - '&6&l » &a&l1x Clef &d&lMythique'
+    '120':
+      cmd:
+        - eco give %p 5000000
+        - xp give %p 150000
+        - crate give to %p legendaire 1
+        - ezlink win %p 565
+      awards:
+        - ''
+        - ' &6&l» &eRécompenses:'
+        - '&6&l » &e? &a&l+ 50 TOKENS &e?'
+        - '&6&l » &a&l5,000,000 $'
+        - '&6&l » &a&l150000 XP (200 niveaux)'
+        - '&6&l » &a&l1x Clef &c&lLégendaire'
+    '150':
+      cmd:
+        - eco give %p 10000000
+        - xp give %p 360000
+        - crate give to %p divin 1
+        - ezlink win %p 566
+      awards:
+        - ''
+        - ' &6&l» &eRécompenses:'
+        - '&6&l » &e? &a&l+ 100 TOKENS &e?'
+        - '&6&l » &a&l10,000,000 $'
+        - '&6&l » &a&l360000 XP (300 niveaux)'
+        - '&6&l » &a&l1x Clef &b&lDivin'
   links:
-    1: "https://bit.ly/2wc0o59"
-    2: "https://bit.ly/30BMgQw"
-    3: "https://bit.ly/2WkXjOU"
-    4: "https://bit.ly/2M32PSc"
-    5: "https://bit.ly/2Qkk1Bl"
-    6: "https://bit.ly/2YJNNlK"
+    # 1 https://serveur-prive.net/minecraft/khraal-network-skyblock-gta-pvp-faction-741/vote
+    # 2 https://vote.top-serveurs.net/minecraft/vote/nemerya/success
+    # 3 https://www.serveurs-minecraft.org/vote.php?id=43753
+    # 4 https://www.serveursminecraft.org/serveur/689/#
+    '1': https://bit.ly/3gKMo7p
+    '2': https://bit.ly/2Vp4XVh
+    '3': https://bit.ly/2WkXjOU
+    '4': https://bit.ly/2wc0o59
+  apiManager:
+    '1': https://serveur-prive.net/api/vote/1518/%ip
+    '2': http://api.liste-serveurs-minecraft.org/vote/vote_verification.php?server_id=196806&ip=%ip&duration=180
+    '3': https://www.serveursminecraft.org/sm_api/peutVoter.php?id=3242&ip=%ip
+    '4': http://www.serveurs-minecraft.org/api/is_valid_vote.php?id=56708&ip=%ip&duration=1440
+    '5': https://api.top-serveurs.net/v1/votes/check-ip?server_token=8JIK4XYL1W&ip=%ip
   texts:
     instructions:
-      - "&e&l* &7Comment voter:"
-      - "  &e1 - &7Clique sur chaque lien ci-dessus"
-      - "  &e2 - &7Valide ton vote sur chaque site"
-      - "  &e3 - &7Clique-&eDroit&7 sur un minecart"
-      - "  &e4 - &7Assure-toi que tout les votes sont valides"
-      - "  &e5 - &7Clique sur &aRecuperer ma recompense"
-      - ""
-      - "&e&l* &7Recompense de fin du mois:"
-      - "&e  - &75 votes -> &e20k $"
-      - "&e  - &710 votes -> &e50k $"
-      - "&e  - &715 votes -> &e20 Tokens"
-      - "&e  - &720 votes -> &e40 Tokens"
-      - "&e  - &725 votes -> &e80 Tokens"
-      - "&e  - &730 votes -> &e130 &eTokens"
-      - ""
-      - "&c&l(!) &cATTENTION &7Nous avons developpe"
-      - "&7un systeme de verification des votes,"
-      - "&7tu dois donc correctement voter :D !"
-      - ""
+      - '&e'
+      - '&6&l » &fComment Voter et Gagner des récompenses ?'
+      - '&e'
+      - '  &e&l1 &8» &7Clique sur un &eminecart&7 ci-dessus'
+      - '&e'
+      - '  &e&l2 &8» &7Clique sur le lien affiché dans le &echat'
+      - '&e'
+      - '  &e&l3 &8» &7Valide &ecorrectement &7ton vote le site'
+      - '&e'
+      - '  &e&l4 &8» &7Clique &edroit&7 sur le minecart'
+      - '&e'
+      - '  &e&l5 &8» &7Si tu as bien voté tu récupèrera'
+      - '       &7tes &erécompenses &7directement'
+      - ''
+      - ''
+      - '&c&lATTENTION &7Il y a un système de vérification des'
+      - '&7votes, il faut donc &nbien voter&7 pour valider le vote'
+      - ''
+    challenges:
+      - '&e'
+      - '&6&l » &fChaque mois, débloque les &epaliers de'
+      - '    &evotes &fet obtiens des &erécompenses&f !'
+      - ''
+      - '&6&l » &fTu peux ainsi remporter des &eTokens'
+      - '    &fà depenser sur le site: &bwww.nemerya.fr&f !'
+      - ''
+      - '&2&l » &a&lClique pour voir tes paliers !'
+      - '&e'
+    minecart:
+      - ''
+      - ''
+      - '&6&l » &eClique gauche: &fObtenir le lien de Vote'
+      - '&6&l » &eClique droit: &fObtenir les récompenses'
+      - ''
+      - '&6&l » &eRécompenses par vote:'
+      - '    &e• &a1x Clef de Vote'
+      - '    &e• &a5,000 $'
+      - '    &e• &a1 Palier de Vote'
+      - ''
+    broadcastVote: §6§l » §b%p §fa voté et a reçu §e1x Clef de Vote §f+ §e5,000$ §favec §e/vote §f!
+    rappelMsg: §7§l(§a§l!§7§!) §a§lTu peux Voter ! Fais §b§l/vote §a§lpour voter et gagner des §e§lClefs de Vote §a§let§e§l 5,000$ §a§l!

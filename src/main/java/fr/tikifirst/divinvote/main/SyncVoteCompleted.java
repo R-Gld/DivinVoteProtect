@@ -5,9 +5,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class SyncVoteCompleted extends BukkitRunnable
 {
-		public Main main;
-		private Player p;
-		private int link;
+		public final Main main;
+		private final Player p;
+		private final int link;
   
 		public SyncVoteCompleted(Main main, Player p, int link) 
 		{
@@ -21,7 +21,7 @@ public class SyncVoteCompleted extends BukkitRunnable
 			UtilsVote uv = new UtilsVote(this.main);
 			uv.voteIsOkay(this.p, this.link);
     
-			this.p.sendMessage("§7(§a!§7) §aTu as validé ton vote sur le §eLien n°" + this.link + "§a !");
+			this.p.sendMessage("Â§7(Â§a!Â§7) Â§aTu as validÃ© ton vote sur le Â§eLien nÂ°" + this.link + "Â§c â¤");
 			this.p.closeInventory();
     
 			VoteGUI vg = new VoteGUI(this.main);

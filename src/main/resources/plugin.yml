@@ -1,5 +1,5 @@
 name: DivinVote
-version: 1.3
+version: 1.4
 author: Tikifirst
 main: fr.tikifirst.divinvote.main.Main
 commands:

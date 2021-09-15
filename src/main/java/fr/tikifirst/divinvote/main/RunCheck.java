@@ -5,15 +5,15 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class RunCheck extends BukkitRunnable {
 	
-	public Main main;
-	private Player p;
-	private int link;
+	public final Main main;
+	private final Player p;
+	private final int link;
 	
 	public RunCheck(Main main, Player p, int link)
 	{
-		this.link = link;
 		this.main = main;
 		this.p = p;
+		this.link = link;
 	}
 	 		
 	@Override

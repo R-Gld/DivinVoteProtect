@@ -5,8 +5,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class SyncVote extends BukkitRunnable {
 	
-	public Main main;
-	private Player p;
+	public final Main main;
+	private final Player p;
 	
 	public SyncVote(Main main, Player p)
 	{

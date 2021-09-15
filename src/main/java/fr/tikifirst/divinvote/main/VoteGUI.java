@@ -2,7 +2,6 @@ package fr.tikifirst.divinvote.main;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -17,112 +16,105 @@ public class VoteGUI {
 		this.main = main;
 	}
 	
-	public void openMain(Player p)
-	{
+	public void openMain(Player p) {
 		UtilsVote uv = new UtilsVote(main);
-		DataManager dm = new DataManager(main);
+		DataManager_SQL dm = new DataManager_SQL();
 		VoteManager vm = new VoteManager(main);
 		
 		ItemStack filler1 = uv.getItem("", "", 160, 1, (byte) 4, false, false);
-		ItemStack filler2 = uv.getItem("", "", 160, 1, (byte) 14, false, false);
-		ItemStack filler3 = uv.getItem("", "", 160, 1, (byte) 1, false, false);
-		ItemStack filler4 = uv.getItem("", "", 160, 1, (byte) 0, false, false);
+		ItemStack filler2 = uv.getItem("", "", 160, 1, (byte) 0, false, false);
 		
-		Inventory inv = Bukkit.createInventory(p, 54, "§4* §8Menu des votes");
+		Inventory inv = Bukkit.createInventory(p, 54, "Â§4* Â§8Menu des votes");
+	
 		
-		for(int i = 0; i < inv.getSize(); i++)
-		{
-			inv.setItem(i, filler4);
-		}
+		//String click = ";;Â§6Â§l Â» Â§eClique-gauche: Â§fObtenir le lien de vote;Â§6Â§l Â» Â§eClique-droit: Â§fValider votre vote et;    Â§frÃ©cupÃ©rer les rÃ©compenses !;;Â§6Â§l Â» Â§eRÃ©compenses:;  Â§fâ€¢ Â§e1x Clef de Vote;  Â§f";
 		
-		//String click = ";;§6§l » §eClique-gauche: §fObtenir le lien de vote;§6§l » §eClique-droit: §fValider votre vote et;    §frécupérer les récompenses !;;§6§l » §eRécompenses:;  §f• §e1x Clef de Vote;  §f";
-		
-		String click = "";
+		StringBuilder click = new StringBuilder();
 		
 		for(String s : main.getConfig().getStringList("config.texts.minecart"))
 		{
-			click = click + s + ";";
-			click = click.replace("&", "§");
+			click.append(s).append(";");
+			click = new StringBuilder(click.toString().replace("&", "Â§"));
 		}
 		
-		String voteStatus = "";
-		int intHasVoted = 1;
+		String voteStatus;
+		int intHasVoted;
 		
 		if(vm.canPlayerVoteAgain(p, 1))
 		{
-			voteStatus = "§7(§a!§7) §aVous pouvez voter sur ce lien";
+			voteStatus = "Â§7(Â§a!Â§7) Â§aTu peux voter sur ce lien !";
 			intHasVoted = 328;
 		} else {
-			voteStatus = "§7(§e!§7) §eVous pourrez voter sur ce lien " +  vm.timeUntileCDIsOver(p, 1);
+			voteStatus = "Â§7(Â§e!Â§7) Â§eTu pourras voter sur ce lien " +  vm.timeUntilCDIsOver(p, 1);
 			intHasVoted = 342;
 		}
 		
-		ItemStack nLink1 = uv.getItem("§eLien de vote n°1", ";§e* §7Site: §ewww.serveur-prive.net;§e* §7Délai: §e1 heure 30;;" + voteStatus + click, intHasVoted, 1, (byte) 0, false, false);
+		ItemStack nLink1 = uv.getItem("Â§eLien de vote nÂ°1", "; Â§7DÃ©lai: Â§b1 heure 30;;" + voteStatus + click, intHasVoted, 1, (byte) 0, false, false);
 		
 		if(vm.canPlayerVoteAgain(p, 2))
 		{
-			voteStatus = "§7(§a!§7) §aVous pouvez voter sur ce lien";
+			voteStatus = "Â§7(Â§a!Â§7) Â§aTu peux voter sur ce lien !";
 			intHasVoted = 328;
 		} else {
-			voteStatus = "§7(§e!§7) §eVous pourrez voter sur ce lien " +  vm.timeUntileCDIsOver(p, 2);
+			voteStatus = "Â§7(Â§e!Â§7) Â§eTu pourras voter sur ce lien " +  vm.timeUntilCDIsOver(p, 2);
 			intHasVoted = 342;
 		}
 		
-		ItemStack nLink2 = uv.getItem("§eLien de vote n°2", ";§e* §7Site: §ewww.liste-serveurs-minecraft.org;§e* §7Délai: §e3 heures;;" + voteStatus + click, intHasVoted, 1, (byte) 0, false, false);
+		ItemStack nLink2 = uv.getItem("Â§eLien de vote nÂ°2", "; Â§7DÃ©lai: Â§b2 heures;;" + voteStatus + click, intHasVoted, 1, (byte) 0, false, false);
 		
 		if(vm.canPlayerVoteAgain(p, 3))
 		{
-			voteStatus = "§7(§a!§7) §aVous pouvez voter sur ce lien";
+			voteStatus = "Â§7(Â§a!Â§7) Â§aTu peux voter sur ce lien !";
 			intHasVoted = 328;
 		} else {
-			voteStatus = "§7(§e!§7) §eVous pourrez voter sur ce lien " +  vm.timeUntileCDIsOver(p, 3);
+			voteStatus = "Â§7(Â§e!Â§7) Â§eTu pourras voter sur ce lien " +  vm.timeUntilCDIsOver(p, 3);
 			intHasVoted = 342;
 		}
 			
-		ItemStack nLink3 = uv.getItem("§eLien de vote n°3", ";§e* §7Site: §ewww.serveursminecraft.org;§e* §7Délai: §e24 heures;;" + voteStatus + click, intHasVoted, 1, (byte) 0, false, false);
+		ItemStack nLink3 = uv.getItem("Â§eLien de vote nÂ°3", "; Â§7DÃ©lai: Â§b24 heures;;" + voteStatus + click, intHasVoted, 1, (byte) 0, false, false);
 
 		if(vm.canPlayerVoteAgain(p, 4))
 		{
-			voteStatus = "§7(§a!§7) §aVous pouvez voter sur ce lien";
+			voteStatus = "Â§7(Â§a!Â§7) Â§aTu peux voter sur ce lien !";
 			intHasVoted = 328;
 		} else {
-			voteStatus = "§7(§e!§7) §eVous pourrez voter sur ce lien " +  vm.timeUntileCDIsOver(p, 4);
+			voteStatus = "Â§7(Â§e!Â§7) Â§eTu pourras voter sur ce lien " +  vm.timeUntilCDIsOver(p, 4);
 			intHasVoted = 342;
 		}
 			
-		ItemStack nLink4 = uv.getItem("§eLien de vote n°4", ";§e* §7Site: §ewww.serveurs-minecraft.org;§e* §7Délai: §e24 heures;;" + voteStatus + click, intHasVoted, 1, (byte) 0, false, false);
+		ItemStack nLink4 = uv.getItem("Â§eLien de vote nÂ°4", "; Â§7DÃ©lai: Â§b24 heures;;" + voteStatus + click, intHasVoted, 1, (byte) 0, false, false);
 
 		
 		SkullMeta  meta = (SkullMeta) Bukkit.getItemFactory().getItemMeta(Material.SKULL_ITEM);
 
 		meta.setOwner(p.getName());
 		
-		ItemStack skull = uv.getItem("  §7-[§e*§7]- §e" + p.getName() + " §7-[§e*§7]-", ";§e* §7Tes votes:;§e  - §7Ce mois: §e" + dm.getCountMonth(p) + ";§e  - §7Total: §e" + dm.getCountAll(p) + ";;§e* §7Event Vote: §e" + main.getConfig().getInt("config.voteParty.current") + "§6/§e" + main.getConfig().getInt("config.voteParty.needed") + ";  §e-> §7Gagnez §a§l200,000 $§7 !", 397, 1 , (byte) 3, false, false);
+		ItemStack skull = uv.getItem("Â§e" + p.getName(), ";Â§6Â§lTES VOTES:;Â§e â€¢ Â§7Ce mois: Â§e" + dm.getCountMonth(p) + ";Â§e â€¢ Â§7Total: Â§e" + dm.getCountAll(p) + ";;Â§bÂ§lEvent Vote Â§7Â» Â§e" + main.getConfig().getInt("config.voteParty.current") + "Â§6/Â§e" + main.getConfig().getInt("config.voteParty.needed") + " votes;;Â§7 Un objectif commun Ã  tous les joueurs.;Â§7 DÃ¨s que l'objectif est atteint, tout le; Â§7monde recevra Â§a300,000 $ Â§7!;Â§e", 397, 1 , (byte) 3, false, false);
 		
 		meta.setDisplayName(skull.getItemMeta().getDisplayName());
 		meta.setLore(skull.getItemMeta().getLore());
 		
 		skull.setItemMeta(meta);
 		
-		String loreChall = "";
+		StringBuilder loreChall = new StringBuilder();
 		
 		for(String s : main.getConfig().getStringList("config.texts.challenges"))
 		{
-			loreChall = loreChall + s + ";";
-			loreChall = loreChall.replace("&", "§");
+			loreChall.append(s).append(";");
+			loreChall = new StringBuilder(loreChall.toString().replace("&", "Â§"));
 		}
 		
-		ItemStack chall = uv.getItem("§a§lPALIERS DE VOTES", loreChall, 399, 1, (byte) 0, false, false);
+		ItemStack chall = uv.getItem("Â§aÂ§lPALIERS DE VOTES", loreChall.toString(), 399, 1, (byte) 0, false, false);
 		
-		String loreInfo = "";
+		StringBuilder loreInfo = new StringBuilder();
 		
 		for(String s : main.getConfig().getStringList("config.texts.instructions"))
 		{
-			loreInfo = loreInfo + s + ";";
-			loreInfo = loreInfo.replace("&", "§");
+			loreInfo.append(s).append(";");
+			loreInfo = new StringBuilder(loreInfo.toString().replace("&", "Â§"));
 		}
 		
-		ItemStack info = uv.getItem("§e§lINFORMATIONS", loreInfo, 340, 1, (byte) 0, false, false);
+		ItemStack info = uv.getItem("Â§eÂ§lINFORMATIONS", loreInfo.toString(), 340, 1, (byte) 0, false, false);
 		
 		inv.setItem(0, filler1);
 		inv.setItem(1, filler1);
@@ -138,89 +130,81 @@ public class VoteGUI {
 		inv.setItem(52, filler1);
 		inv.setItem(53, filler1);
 		
+		inv.setItem(2, filler2);
 		inv.setItem(3, filler2);
-		inv.setItem(4, filler2);
 		inv.setItem(5, filler2);
+		inv.setItem(6, filler2);
+		inv.setItem(47, filler2);
 		inv.setItem(48, filler2);
 		inv.setItem(49, filler2);
 		inv.setItem(50, filler2);
-		
-		inv.setItem(2, filler3);
-		inv.setItem(6, filler3);
-		inv.setItem(18, filler3);
-		inv.setItem(27, filler3);
-		inv.setItem(26, filler3);
-		inv.setItem(35, filler3);
-		inv.setItem(47, filler3);
-		inv.setItem(51, filler3);
+		inv.setItem(51, filler2);
 
-		inv.setItem(20, nLink1);
-		inv.setItem(22, nLink3);
-		inv.setItem(24, nLink4);
-		//inv.setItem(25, nLink4);
+		inv.setItem(19, nLink1);
+		inv.setItem(21, nLink2);
+		inv.setItem(23, nLink3);
+		inv.setItem(25, nLink4);
 		
-		inv.setItem(38, info);
-		inv.setItem(40, chall);
-		inv.setItem(42, skull);
+		inv.setItem(39, info);
+		inv.setItem(41, chall);
+		inv.setItem(4, skull);
 		
 		p.openInventory(inv);
 		
 	}
 
-	public void openChallenges(Player p)
-	{
+	public void openChallenges(Player p) {
 		UtilsVote uv = new UtilsVote(main);
-		DataManager dm = new DataManager(main);
+		DataManager_SQL dm2 = new DataManager_SQL();
+		DivinPlayer dp = dm2.getDivinPlayer(p);
 		
-		FileConfiguration fcp = dm.getPlayerConfigurationFile(p);
-		
-		Inventory inv = Bukkit.createInventory(p, 36, "§4* §8Paliers mensuels"); 
+		Inventory inv = Bukkit.createInventory(p, 36, "Â§4* Â§8Paliers mensuels"); 
 		
 		ItemStack is;
 		int i = 0;
 		
 		int[] slots = {11, 20, 21, 22, 13, 14, 15, 24};
 		
-		int month = fcp.getInt("datas.count.month");
-		int chall = fcp.getInt("datas.challenges");
+		long month = dp.getCount_months();
+		long chall = dp.getCount_all();
 		
-		for(String s : main.getConfig().getConfigurationSection("config.paliers").getKeys(false))
-		{
+		for(String s : main.getConfig().getConfigurationSection("config.paliers").getKeys(false)) {
 			
 			int idIs;
-			String status = "";
-			String loreAwards = "";
+			String status;
+			StringBuilder loreAwards = new StringBuilder();
 			
-			if(chall > i)
-			{
+			if(chall > i) {
 				idIs = 422;
-				status = ";§f§l(§a§l!§f§l) §a§lPalier débloqué !";
+				status = ";Â§2Â§l Â» Â§aÂ§lPalier dÃ©bloquÃ© !";
 			} else {
 				
 				for(String s1 : main.getConfig().getStringList("config.paliers." + s + ".awards"))
 				{
-					loreAwards = loreAwards + s1 + ";";
-					loreAwards = loreAwards.replace("&", "§");
+					loreAwards.append(s1).append(";");
+					loreAwards = new StringBuilder(loreAwards.toString().replace("&", "Â§"));
 				}
 				
-				if(month >= Integer.valueOf(s))
+				if(month >= Integer.parseInt(s))
 				{
 					if(chall == i)
 					{
 						idIs = 343;
-						status = ";§f§l(§e§l!§f§l) §e§lPlalier complété;;§f§l(§a§l!§f§l) §a§lClique pour obtenir ta récompense !";
+						status = ";Â§2 âœ” Â§aPlalier complÃ©tÃ©;;Â§2Â§l Â» Â§aÂ§lClique pour obtenir ta rÃ©compense !";
+						//status = ";Â§fÂ§l(Â§eÂ§l!Â§fÂ§l) Â§eÂ§lPlalier complÃ©tÃ©;;Â§fÂ§l(Â§aÂ§l!Â§fÂ§l) Â§aÂ§lClique pour obtenir ta rÃ©compense !";
 					} else {
 						idIs = 328;
-						status = ";§f§l(§c§l!§f§l) §c§lPalier à débloquer !;;§f§l(§e§l!§f§l) §e§lTu dois débloquer le palier précédent !";
+						status = ";Â§4 âœ– Â§cPalier Ã  dÃ©bloquer !;;Â§6Â§l Â» Â§eÂ§lTu dois dÃ©bloquer le palier prÃ©cÃ©dent !";
+						//status = ";Â§fÂ§l(Â§cÂ§l!Â§fÂ§l) Â§cÂ§lPalier Ã  dÃ©bloquer !;;Â§fÂ§l(Â§eÂ§l!Â§fÂ§l) Â§eÂ§lTu dois dÃ©bloquer le palier prÃ©cÃ©dent !";
 					}
 				} else {
 					idIs = 328;
-					status = ";§f§l(§c§l!§f§l) §c§lPalier non débloqué ! §f§l(§e§l" + month + "§f§l/§e§l" + s + "§f§l)";
+					status = ";Â§4 âœ– Â§cPalier non dÃ©bloquÃ©: Â§e" + month + "Â§6/Â§e" + s + " votes";
+					//status = ";Â§fÂ§l(Â§cÂ§l!Â§fÂ§l) Â§cÂ§lPalier non dÃ©bloquÃ© ! Â§fÂ§l(Â§eÂ§l" + month + "Â§fÂ§l/Â§eÂ§l" + s + "Â§fÂ§l)";
 				}
-				
 			}
 			
-			is = uv.getItem("§ePalier n°" + (i + 1), status + ";" + loreAwards, idIs, 1, (byte) 0, false, false);
+			is = uv.getItem("Â§ePalier nÂ°" + (i + 1), status + ";" + loreAwards, idIs, 1, (byte) 0, false, false);
 			inv.setItem(slots[i], is);
 			
 			i++;
