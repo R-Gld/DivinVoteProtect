@@ -1,9 +1,6 @@
 package fr.tikifirst.divinvote.cmd;
 
-import fr.tikifirst.divinvote.main.DataManager_YML;
-import fr.tikifirst.divinvote.main.Main;
-import fr.tikifirst.divinvote.main.RunRappel;
-import fr.tikifirst.divinvote.main.VoteGUI;
+import fr.tikifirst.divinvote.main.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -34,7 +31,7 @@ public class commandsVote implements CommandExecutor {
 				
 				if(args[0].equalsIgnoreCase("reset"))
 				{
-					DataManager_YML dm = new DataManager_YML();
+					DataManager_SQL dm = new DataManager_SQL();
 					dm.resetMonth();
 					
 					//VoteManager vm = new VoteManager(main);
@@ -44,7 +41,7 @@ public class commandsVote implements CommandExecutor {
 				
 				if(args[0].equalsIgnoreCase("resetChall"))
 				{
-					DataManager_YML dm = new DataManager_YML();
+					DataManager_SQL dm = new DataManager_SQL();
 					dm.resetChall();
 				}
 
